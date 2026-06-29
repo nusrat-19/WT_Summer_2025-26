@@ -1,0 +1,62 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    
+
+}
+header{
+    background-color: rgb(173, 173, 230);
+    text-align: center;
+    padding: 15px;
+}
+nav{
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    margin: 15px;
+}
+ nav a:hover{
+    color: aqua;
+ }
+ section{
+    margin-top:20px ;
+ }
+ table{
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+ td{
+    padding: 8px;
+ }
+ input[type="text"],
+ input[type="email"],
+ select,
+ textarea{
+    width: 220px;
+    padding: 5px;
+ }
+ input[type="radio"]{
+    width: auto;
+}
+input[type="submit"]{
+    padding: 8px 15px;
+    background-color: lightblue;
+    border: 1px solid black;
+}
+ 
+ input[type="submit"]:hover{
+    background-color: skyblue;
+ }
+
+ footer{
+    background-color: rgb(24, 72, 87);
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+ }
