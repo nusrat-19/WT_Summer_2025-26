@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form Validation </title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: local;
+        }
+
+        .box{
+           width:400px;
+            margin:auto;
+            margin-top:30px;
+            background:white;
+            padding:20px;
+            border-radius:10px 
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        input,textarea{
+            width:100%;
+            padding:8px;
+            margin-top:5px;
+            margin-bottom:5px;
+        }
+       
+
+        button{
+            width:100%;
+            padding:10px;
+            background:blue;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+ 
+        button:hover{
+            background-color: darkcyan;
+        }
+        .error{
+            color:red;
+            font-size:14px;
+            margin-top:0;
+            margin-bottom:8px;
+        }
+
+        #success{
+            margin-top:20px;
+            color:green;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class ="box">
+    <h2>CONTACT FORM</h2> 
+
+    <form id="FORM">
+        <label>Name :</label>
+        <input type = "text" id ="name">
+        <p class="error" id="nameError"></p>
+
+        <label>Email :</label>
+        <input type = "email" id ="email">
+        <p class="error" id="emailError"></p>
+        
+        <label> Phone Number :</label>
+        <input type ="text" id="phone">
+        <p class="error" id="phoneError"></p>
+
+        <label>Password :</label>
+        <input type = "password" id="password">
+        <p class="error" id="passwordError"></p>
+
+        <label>Age :</label>
+        <input type ="number" id="age">
+        <p class="error" id="ageError"></p>
+
+        <label>Message :</label>
+        <textarea id="message"></textarea>
+        <p class="error" id="messageError"></p>
+
+        <button type="submit">Register</button>
+
+    </form>
+    <section id="success"></section>
+    </div>
+
+    <script>
+        document.getElementById("FORM").addEventListener("submit",function(event){event.preventDefault();
+            var valid=true;
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var phone=document.getElementById("phone").value;
+            var password=document.getElementById("password").value;
+            var age=document.getElementById("age").value;
+            var message=document.getElementById("message").value;
+
+            document.getElementById("nameError").innerHTML="";
+            document.getElementById("emailError").innerHTML="";
+            document.getElementById("phoneError").innerHTML="";
+            document.getElementById("ageError").innerHTML="";
+            document.getElementById("passwordError").innerHTML="";
+            document.getElementById("messageError").innerHTML="";
+            document.getElementById("success").innerHTML="";
+
+            if(name==""){
+                document.getElementById("nameError").innerHTML="Name Required";
+                valid=false;
+            }
+
+            else if(!/^[A-Za-z]+$/.test(name)){
+                document.getElementById("nameError").innerHTML="Only letter and space allowed";
+                valid=false;
+            }
+
+            else if(name.length<3){
+              document.getElementById("nameError").innerHTML="minimum 3 characters requored";  
+              valid=false;
+            }
+            if(email==""){
+                document.getElementById("emailError").innerHTML="Invalid email";
+                valid=false;
+            }
+            else if(!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)){
+            document.getElementById("emailError").innerHTML="Invalid email";
+                valid=false;
+            }
+            
+            if(phone==""){
+                document.getElementById("phoneError").innerHTML="Phone must contain exactly 10 digits";
+                valid=false;
+            }
+            else if(!/^[0-9]{10}$/.test(phone)){
+                document.getElementById("phoneError").innerHTML="Phone must contain exactly 10 digits";
+                valid=false;
+            }
+
+            if(password==""){
+                document.getElementById("passwordError").innerHTML="Password is required";
+                valid=false;
+            }
+            else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*!]).{8,}$/.test(password)){
+               document.getElementById("passwordError").innerHTML="Password is not strong enough";
+               valid=false;
+            }
+
+            if(age==""){
+                document.getElementById("ageError").innerHTML="Age must be 18 or older";
+                valid=false;
+            }
+
+            else if(age<18){
+            document.getElementById("ageError").innerHTML="Age must be 18 or older";
+             valid=false;
+            }
+
+            if(message==""){
+                document.getElementById("messageError").innerHTML="Message must be contain at least 10 characters";
+                valid=false;
+            }
+
+            else if(message.length<10){
+               document.getElementById("messageError").innerHTML="Message must be contain at least 10 characters";
+               valid=false; 
+            }
+
+            if(valid){
+                document.getElementById("success").innerHTML="<h3>Registration Successful!</h3>"+"<p><b>Name:</b> "+name+"</p>"+"<p><b>Email:</b> "+email+"</p>"+
+                "<p><b>Phone:</b> "+phone+"</p>"+"<p><b>Age:</b> "+age+"</p>"+
+                "<p><b>Message:</b> "+message+"</p>"+"<p>Thank you for registering successfully.</p>";
+ 
+             document.getElementById("FORM").reset();
+            }
+        })
+    </script>
+</body>
+</html>
